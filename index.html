@@ -81,46 +81,64 @@
       margin: 0.5rem 0;
     }
 
-    /* Sorters table styling */
-    .sorters-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-    .sorters-table th,
-    .sorters-table td {
-      padding: 0.75rem;
-      border-bottom: 1px solid #ddd;
-      text-align: left;
-    }
-    .sorters-table tbody tr:nth-child(odd) {
-      background: #f9f7e8;
-    }
-    .sorters-table td.letter {
-      font-weight: 700;
-      background: #fff8c4;
-      width: 5%;
-    }
-    /* First group tint */
-    .sorters-table th:nth-child(1),
-    .sorters-table th:nth-child(2),
-    .sorters-table td:nth-child(1),
-    .sorters-table td:nth-child(2) {
-      background: #fefee0;
-    }
-    /* Second group tint */
-    .sorters-table th:nth-child(3),
-    .sorters-table th:nth-child(4),
-    .sorters-table td:nth-child(3),
-    .sorters-table td:nth-child(4) {
-      background: #fffdef;
-    }
-    /* Vertical divider */
-    .sorters-table th:nth-child(3),
-    .sorters-table td:nth-child(3) {
-      border-left: 2px solid #ccc;
-      padding-left: 1.5rem;
-    }
+<style>
+  /* … your existing styles … */
+
+  .sorters-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  .sorters-table th,
+  .sorters-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  .sorters-table tbody tr:nth-child(odd) {
+    background: #f9f7e8;
+  }
+  .sorters-table td.letter {
+    font-weight: 700;
+    background: #fff8c4;
+  }
+  /* Column tints */
+  .sorters-table th:nth-child(1),
+  .sorters-table th:nth-child(2),
+  .sorters-table td:nth-child(1),
+  .sorters-table td:nth-child(2) {
+    background: #fefee0;
+  }
+  .sorters-table th:nth-child(3),
+  .sorters-table th:nth-child(4),
+  .sorters-table td:nth-child(3),
+  .sorters-table td:nth-child(4) {
+    background: #fffdef;
+  }
+  /* Vertical divider */
+  .sorters-table th:nth-child(3),
+  .sorters-table td:nth-child(3) {
+    border-left: 2px solid #ccc;
+    padding-left: 1.5rem;
+  }
+  /* NEW: explicit widths */
+  .sorters-table th:nth-child(1),
+  .sorters-table td:nth-child(1) {
+    width: 5%;
+  }
+  .sorters-table th:nth-child(2),
+  .sorters-table td:nth-child(2) {
+    width: 20%;
+  }
+  .sorters-table th:nth-child(3),
+  .sorters-table td:nth-child(3) {
+    width: 5%;
+  }
+  .sorters-table th:nth-child(4),
+  .sorters-table td:nth-child(4) {
+    width: 20%;
+  }
+</style>
 
     footer {
       text-align: center;
