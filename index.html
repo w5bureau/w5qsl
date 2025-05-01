@@ -81,6 +81,47 @@
       margin: 0.5rem 0;
     }
 
+    /* Sorters table styling */
+    .sorters-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    .sorters-table th,
+    .sorters-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    .sorters-table tbody tr:nth-child(odd) {
+      background: #f9f7e8;
+    }
+    .sorters-table td.letter {
+      font-weight: 700;
+      background: #fff8c4;
+      width: 5%;
+    }
+    /* First group tint */
+    .sorters-table th:nth-child(1),
+    .sorters-table th:nth-child(2),
+    .sorters-table td:nth-child(1),
+    .sorters-table td:nth-child(2) {
+      background: #fefee0;
+    }
+    /* Second group tint */
+    .sorters-table th:nth-child(3),
+    .sorters-table th:nth-child(4),
+    .sorters-table td:nth-child(3),
+    .sorters-table td:nth-child(4) {
+      background: #fffdef;
+    }
+    /* Vertical divider */
+    .sorters-table th:nth-child(3),
+    .sorters-table td:nth-child(3) {
+      border-left: 2px solid #ccc;
+      padding-left: 1.5rem;
+    }
+
     footer {
       text-align: center;
       margin-top: 2rem;
@@ -95,53 +136,6 @@
         gap: 1rem;
       }
     }
-    .sorters-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
-.sorters-table th,
-.sorters-table td {
-  padding: 0.75rem;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
-}
-
-/* Zebra striping */
-.sorters-table tbody tr:nth-child(odd) {
-  background: #f9f7e8;
-}
-
-/* Highlight letter cells */
-.sorters-table td.letter {
-  font-weight: 700;
-  background: #fff8c4;
-  width: 5%;
-}
-
-/* Subtle tint for first group (cols 1–2) */
-.sorters-table td:nth-child(1),
-.sorters-table td:nth-child(2),
-.sorters-table th:nth-child(1),
-.sorters-table th:nth-child(2) {
-  background: #fefee0;
-}
-
-/* Subtle tint for second group (cols 3–4) */
-.sorters-table td:nth-child(3),
-.sorters-table td:nth-child(4),
-.sorters-table th:nth-child(3),
-.sorters-table th:nth-child(4) {
-  background: #fffdef;
-}
-
-/* Vertical divider between groups */
-.sorters-table td:nth-child(3),
-.sorters-table th:nth-child(3) {
-  border-left: 2px solid #ccc;
-  padding-left: 1.5rem;
-}
-
   </style>
 </head>
 <body>
@@ -190,50 +184,37 @@
     <p>Questions? Email <a href="mailto:w5@ruskcountyarc.com">Bureau Manager</a>.</p>
   </section>
 
-<section class="card">
-  <h2>QSL Sorters</h2>
-  <p>Your sorter is determined by the first letter of your call suffix. Feel free to reach out to them with any non-trivial questions.</p>
-  <div style="overflow-x:auto">
-    <table class="sorters-table" style="width:100%; border-collapse: collapse;">
-      <thead>
-        <tr>
-          <th style="text-align:left; padding:8px; border-bottom:1px solid #ccc;">Letter</th>
-          <th style="text-align:left; padding:8px; border-bottom:1px solid #ccc;">Sorter</th>
-          <th style="text-align:left; padding:8px; border-bottom:1px solid #ccc;">Letter</th>
-          <th style="text-align:left; padding:8px; border-bottom:1px solid #ccc;">Sorter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td style="padding:6px; border-bottom:1px solid #eee;">A</td><td style="padding:6px; border-bottom:1px solid #eee;">Scott, AA5AM</td>
-            <td style="padding:6px; border-bottom:1px solid #eee;">B</td><td style="padding:6px; border-bottom:1px solid #eee;">Pete, KF5RD</td></tr>
-        <tr><td style="padding:6px; border-bottom:1px solid #eee;">C</td><td style="padding:6px; border-bottom:1px solid #eee;">Marcus, N5ZY</td>
-            <td style="padding:6px; border-bottom:1px solid #eee;">D</td><td style="padding:6px; border-bottom:1px solid #eee;">Pete, KF5RD</td></tr>
-        <tr><td style="padding:6px; border-bottom:1px solid #eee;">E</td><td style="padding:6px; border-bottom:1px solid #eee;">Ed, K5EK</td>
-            <td style="padding:6px; border-bottom:1px solid #eee;">F</td><td style="padding:6px; border-bottom:1px solid #eee;">Joe, N5FTF</td></tr>
-        <tr><td style="padding:6px; border-bottom:1px solid #eee;">G</td><td style="padding:6px; border-bottom:1px solid #eee;">Pete, KF5RD</td>
-            <td style="padding:6px; border-bottom:1px solid #eee;">H</td><td style="padding:6px; border-bottom:1px solid #eee;">David, W5QZ</td></tr>
-        <tr><td style="padding:6px; border-bottom:1px solid #eee;">I</td><td style="padding:6px; border-bottom:1px solid #eee;">Marcus, N5ZY</td>
-            <td style="padding:6px; border-bottom:1px solid #eee;">J</td><td style="padding:6px; border-bottom:1px solid #eee;">Scott, AA5AM</td></tr>
-        <tr><td style="padding:6px; border-bottom:1px solid #eee;">K</td><td style="padding:6px; border-bottom:1px solid #eee;">Scott, AA5AM</td>
-            <td style="padding:6px; border-bottom:1px solid #eee;">L</td><td style="padding:6px; border-bottom:1px solid #eee;">Pete, KF5RD</td></tr>
-        <tr><td style="padding:6px; border-bottom:1px solid #eee;">M</td><td style="padding:6px; border-bottom:1px solid #eee;">Matt, W5MT</td>
-            <td style="padding:6px; border-bottom:1px solid #eee;">N</td><td style="padding:6px; border-bottom:1px solid #eee;">Marcus, N5ZY</td></tr>
-        <tr><td style="padding:6px; border-bottom:1px solid #eee;">O</td><td style="padding:6px; border-bottom:1px solid #eee;">Matt, W5MT</td>
-            <td style="padding:6px; border-bottom:1px solid #eee;">P</td><td style="padding:6px; border-bottom:1px solid #eee;">Sam, W5CU</td></tr>
-        <tr><td style="padding:6px; border-bottom:1px solid #eee;">Q</td><td style="padding:6px; border-bottom:1px solid #eee;">Scott, AA5AM</td>
-            <td style="padding:6px; border-bottom:1px solid #eee;">R</td><td style="padding:6px; border-bottom:1px solid #eee;">Scott, AA5AM</td></tr>
-        <tr><td style="padding:6px; border-bottom:1px solid #eee;">S</td><td style="padding:6px; border-bottom:1px solid #eee;">Pete, KF5RD</td>
-            <td style="padding:6px; border-bottom:1px solid #eee;">T</td><td style="padding:6px; border-bottom:1px solid #eee;">Pete, KF5RD</td></tr>
-        <tr><td style="padding:6px; border-bottom:1px solid #eee;">U</td><td style="padding:6px; border-bottom:1px solid #eee;">Morrie, KB5UNX</td>
-            <td style="padding:6px; border-bottom:1px solid #eee;">V</td><td style="padding:6px; border-bottom:1px solid #eee;">Morrie, KB5UNX</td></tr>
-        <tr><td style="padding:6px; border-bottom:1px solid #eee;">W</td><td style="padding:6px; border-bottom:1px solid #eee;">Jeff, K5WE</td>
-            <td style="padding:6px; border-bottom:1px solid #eee;">X</td><td style="padding:6px; border-bottom:1px solid #eee;">Scott, AA5AM</td></tr>
-        <tr><td style="padding:6px; border-bottom:1px solid #eee;">Y</td><td style="padding:6px; border-bottom:1px solid #eee;">Joe, N5FTF</td>
-            <td style="padding:6px; border-bottom:1px solid #eee;">Z</td><td style="padding:6px; border-bottom:1px solid #eee;">Pete, KF5RD</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
+  <section class="card">
+    <h2>QSL Sorters</h2>
+    <p>Your sorter is determined by the first letter of your call suffix. Reach out to them for any questions.</p>
+    <div style="overflow-x:auto">
+      <table class="sorters-table">
+        <thead>
+          <tr>
+            <th>Letter</th>
+            <th>Sorter</th>
+            <th>Letter</th>
+            <th>Sorter</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="letter">A</td><td>Scott, AA5AM</td><td class="letter">B</td><td>Pete, KF5RD</td></tr>
+          <tr><td class="letter">C</td><td>Marcus, N5ZY</td><td class="letter">D</td><td>Pete, KF5RD</td></tr>
+          <tr><td class="letter">E</td><td>Ed, K5EK</td><td class="letter">F</td><td>Joe, N5FTF</td></tr>
+          <tr><td class="letter">G</td><td>Pete, KF5RD</td><td class="letter">H</td><td>David, W5QZ</td></tr>
+          <tr><td class="letter">I</td><td>Marcus, N5ZY</td><td class="letter">J</td><td>Scott, AA5AM</td></tr>
+          <tr><td class="letter">K</td><td>Scott, AA5AM</td><td class="letter">L</td><td>Pete, KF5RD</td></tr>
+          <tr><td class="letter">M</td><td>Matt, W5MT</td><td class="letter">N</td><td>Marcus, N5ZY</td></tr>
+          <tr><td class="letter">O</td><td>Matt, W5MT</td><td class="letter">P</td><td>Sam, W5CU</td></tr>
+          <tr><td class="letter">Q</td><td>Scott, AA5AM</td><td class="letter">R</td><td>Scott, AA5AM</td></tr>
+          <tr><td class="letter">S</td><td>Pete, KF5RD</td><td class="letter">T</td><td>Pete, KF5RD</td></tr>
+          <tr><td class="letter">U</td><td>Morrie, KB5UNX</td><td class="letter">V</td><td>Morrie, KB5UNX</td></tr>
+          <tr><td class="letter">W</td><td>Jeff, K5WE</td><td class="letter">X</td><td>Scott, AA5AM</td></tr>
+          <tr><td class="letter">Y</td><td>Joe, N5FTF</td><td class="letter">Z</td><td>Pete, KF5RD</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
   <footer>
     &copy; 2025 W5 Incoming QSL Bureau
@@ -242,7 +223,6 @@
   <script>
     let callsignData = [];
 
-    // Load data.json once on page load
     window.addEventListener('DOMContentLoaded', async () => {
       try {
         const res = await fetch('data.json');
@@ -254,7 +234,6 @@
       }
     });
 
-    // Lookup handler
     document.getElementById('go').addEventListener('click', () => {
       const cs = document.getElementById('search').value.trim().toUpperCase();
       const resultEl = document.getElementById('result');
@@ -267,18 +246,13 @@
         resultEl.innerHTML = `<p>No record found for ${cs}.</p>`;
         return;
       }
-      // Build each line
       const lines = [];
       lines.push(`${rec.callsign}: ${rec.cards ?? '0'} Cards`);
       lines.push(`${rec.envelopes ?? '0'} Envelopes on hand`);
-      if (rec.received != null)
-        lines.push(`${rec.received} Received`);
-      if (rec.mailed != null)
-        lines.push(`${rec.mailed} Envelopes Mailed`);
-      if (rec.balance != null)
-        lines.push(`${rec.balance} Credit`);
-      if (rec.lastMail)
-        lines.push(`${rec.lastMail} was the last mailing`);
+      if (rec.received != null) lines.push(`${rec.received} Received`);
+      if (rec.mailed != null) lines.push(`${rec.mailed} Envelopes Mailed`);
+      if (rec.balance != null) lines.push(`${rec.balance} Credit`);
+      if (rec.lastMail) lines.push(`${rec.lastMail} was the last mailing`);
 
       resultEl.innerHTML = lines.map(l => `<p>${l}</p>`).join('');
     });
