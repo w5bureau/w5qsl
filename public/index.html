@@ -1,1 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>W5 Incoming QSL Bureau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #2980b9;
+      --bg: #fffde7;
+      --text: #333;
+      --card-bg: #fff;
+      --radius: 0.5rem;
+      --transition: 0.3s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 1rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header h1 { font-size: 2rem; color: var(--primary); }
+    header p { font-size: 1rem; color: var(--text); }
 
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform var(--transition);
+    }
+    .card:hover { transform: translateY(-3px); }
+
+    h2 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .search-wrap {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .search-wrap input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: var(--radius);
+      font-size: 1rem;
+    }
+    .search-wrap button {
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .search-wrap button:hover {
+      background: #1f6391;
+    }
+
+    #result p {
+      margin: 0.5rem 0;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (min-width: 600px) {
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="card">
+    <h1>W5 Incoming QSL Bureau</h1>
+    <p>Helping hams manage their QSL cards since the 1950s</p>
+  </header>
+
+  <section class="card grid-2">
+    <div>
+      <h2>News & Updates</h2>
+      <p><strong>Effective April 1, 2025:</strong> Management transitioned to David Chenault, W5CWT, and the Rusk County ARC.</p>
+      <p><strong>April 20, 2025:</strong> PayPal & Venmo payments now accepted.</p>
+    </div>
+    <div>
+      <h2>Fees & Payments</h2>
+      <ul>
+        <li>Payment methods: cash, check, money order, PayPal, Venmo</li>
+        <li>No SASEs, labels, or stamps</li>
+        <li>Mail to:<br>
+            W5 Incoming Bureau<br>
+            P.O. Box 1496, Henderson, TX 75653
+        </li>
+      </ul>
+      <p><em>Include your callsign on all payments.</em></p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Search Your Callsign</h2>
+    <div class="search-wrap">
+      <input type="text" id="search" placeholder="Enter callsign…">
+      <button id="go">Lookup</button>
+    </div>
+    <div id="result"><p>Results will appear here.</p></div>
+  </section>
+
+  <section class="card">
+    <h2>Resources & Contact</h2>
+    <ul>
+      <li><a href="https://pe.usps.com" target="_blank">USPS Price List</a></li>
+      <li><a href="/old-rates">Old Stamp Rates</a></li>
+      <li><a href="https://www.arrl.org" target="_blank">American Radio Relay League</a></li>
+      <li><a href="https://wireless2.fcc.gov" target="_blank">FCC License Archive</a></li>
+    </ul>
+    <p>Questions? Email <a href="mailto:w5@ruskcountyarc.com">Bureau Manager</a>.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 W5 Incoming QSL Bureau
+  </footer>
+
+  <script>
+    let callsignData = [];
+
+    // Load data.json once on page load
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res = await fetch('data.json');
+        callsignData = await res.json();
+      } catch (err) {
+        console.error('Failed to load data.json:', err);
+        document.getElementById('result').innerHTML =
+          '<p style="color:red">Unable to load data.</p>';
+      }
+    });
+
+    // Lookup handler
+    document.getElementById('go').addEventListener('click', () => {
+      const cs = document.getElementById('search').value.trim().toUpperCase();
+      const resultEl = document.getElementById('result');
+      if (!cs) {
+        resultEl.innerHTML = '<p>Please enter a callsign.</p>';
+        return;
+      }
+      const rec = callsignData.find(r => r.callsign === cs);
+      if (!rec) {
+        resultEl.innerHTML = `<p>No record found for ${cs}.</p>`;
+        return;
+      }
+      // Build each line
+      const lines = [];
+      lines.push(`${rec.callsign}: ${rec.cards ?? '0'} Cards`);
+      lines.push(`${rec.envelopes ?? '0'} Envelopes on hand`);
+      if (rec.received != null)
+        lines.push(`${rec.received} Received`);
+      if (rec.mailed != null)
+        lines.push(`${rec.mailed} Envelopes Mailed`);
+      if (rec.balance != null)
+        lines.push(`${rec.balance} Credit`);
+      if (rec.lastMail)
+        lines.push(`${rec.lastMail} was the last mailing`);
+
+      resultEl.innerHTML = lines.map(l => `<p>${l}</p>`).join('');
+    });
+  </script>
+</body>
+</html>
