@@ -95,6 +95,53 @@
         gap: 1rem;
       }
     }
+    .sorters-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.sorters-table th,
+.sorters-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+/* Zebra striping */
+.sorters-table tbody tr:nth-child(odd) {
+  background: #f9f7e8;
+}
+
+/* Highlight letter cells */
+.sorters-table td.letter {
+  font-weight: 700;
+  background: #fff8c4;
+  width: 5%;
+}
+
+/* Subtle tint for first group (cols 1–2) */
+.sorters-table td:nth-child(1),
+.sorters-table td:nth-child(2),
+.sorters-table th:nth-child(1),
+.sorters-table th:nth-child(2) {
+  background: #fefee0;
+}
+
+/* Subtle tint for second group (cols 3–4) */
+.sorters-table td:nth-child(3),
+.sorters-table td:nth-child(4),
+.sorters-table th:nth-child(3),
+.sorters-table th:nth-child(4) {
+  background: #fffdef;
+}
+
+/* Vertical divider between groups */
+.sorters-table td:nth-child(3),
+.sorters-table th:nth-child(3) {
+  border-left: 2px solid #ccc;
+  padding-left: 1.5rem;
+}
+
   </style>
 </head>
 <body>
