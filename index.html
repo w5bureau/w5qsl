@@ -179,11 +179,66 @@
 /* If you want to bold the label in each line, you can wrap it in <strong> in your JS output, e.g.: */
 /* lines.push(`<p><strong>Cards:</strong> ${rec.cards}</p>`); */
 
+  /* make site-container a positioning context */
+.site-container { position: relative; }
+
+/* container for decorative scans */
+.bg-images {
+  pointer-events: none;        /* clicks pass through */
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  z-index: 0;                  /* beneath everything */
+}
+/* each scan */
+.bg-image {
+  position: absolute;
+  opacity: 0.15;               /* faded look */
+  filter: grayscale(80%) blur(1px);
+  max-width: 40%;              /* scale as needed */
+  transition: transform 0.3s ease;
+}
+/* tweak positions/rotations per image */
+.bg1 {
+  top: 10%; left: -10%;
+  transform: rotate(-12deg);
+}
+.bg2 {
+  top: 50%; left: -5%;
+  transform: rotate(8deg);
+}
+.bg3 {
+  bottom: 5%; left: 0%;
+  transform: rotate(-5deg);
+}
+
+/* ensure cards sit above the images */
+.card, .site-header, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* mobile: images fully behind and subtler */
+@media (max-width: 768px) {
+  .bg-image {
+    opacity: 0.08;
+    max-width: 60%;
+    left: 50%; transform: translateX(-50%) rotate(0);
+  }
+}
+
     
   </style>
 </head>
 <body>
   <div class="site-container">
+<div class="bg-images">
+  <img src="images/qsl1.png" alt="" class="bg-image bg1" />
+  <img src="images/qsl2.png" alt="" class="bg-image bg2" />
+  <img src="images/qsl3.png" alt="" class="bg-image bg3" />
+</div>
+
     <header class="site-header">
       <div class="logo-container">
         <img src="logo.png" alt="W5 Bureau Logo" class="logo" />
