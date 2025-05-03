@@ -195,6 +195,20 @@
       padding-left: .5rem;
       padding-right: .5rem;
     }
+
+    /* Responsive table wrapper */
+    .table-responsive {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+    }
+
+/* Ensure the table doesn’t shrink too small */
+  .price-list-table {
+    min-width: 600px;  /* adjust to the natural width of your table */
+    width: 100%;
+     border-collapse: collapse;
+  }
+
 }
 
   </style>
@@ -260,34 +274,37 @@
       </div>
     </section>
 
-    <section class="card">
-      <h2>Price List</h2>
-      <table class="price-list-table">
-        <thead>
-          <tr>
-            <th>Item</th><th>Quantity</th><th>Price</th><th>Includes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>SASE 5-pack</td><td>5 envelopes</td><td>$7.50</td>
-            <td>Envelopes & standard postage</td>
-          </tr>
-          <tr>
-            <td>SASE 10-pack</td><td>10 envelopes</td><td>$15.00</td>
-            <td>Envelopes & standard postage</td>
-          </tr>
-          <tr>
-            <td>Extra Ounces</td><td>10</td><td>$2.80</td>
-            <td>10 × 1oz stamps</td>
-          </tr>
-          <tr>
-            <td>Extra Ounces</td><td>20</td><td>$5.60</td>
-            <td>20 × 1oz stamps</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+<section class="card">
+  <h2>Price List</h2>
+  <div class="table-responsive">
+    <table class="price-list-table">
+      <thead>
+        <tr>
+          <th>Item</th><th>Quantity</th><th>Price</th><th>Includes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SASE 5-pack</td><td>5 envelopes</td><td>$7.50</td>
+          <td>Envelopes & standard postage</td>
+        </tr>
+        <tr>
+          <td>SASE 10-pack</td><td>10 envelopes</td><td>$15.00</td>
+          <td>Envelopes & standard postage</td>
+        </tr>
+        <tr>
+          <td>Extra Ounces</td><td>10</td><td>$2.80</td>
+          <td>10 × 1oz stamps</td>
+        </tr>
+        <tr>
+          <td>Extra Ounces</td><td>20</td><td>$5.60</td>
+          <td>20 × 1oz stamps</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
 
     <!-- Your search, sorter info, and other cards would continue below... -->
 
