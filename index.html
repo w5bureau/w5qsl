@@ -40,11 +40,13 @@
     .site-header .logo {
       width: 150px;
       height: 150px;
-      flex-shrink: 0;
-      background: #ffffff url('logo.png') center/contain no-repeat;
+      object-fit: contain;
       border-radius: 0.25rem;
       margin-right: 1.5rem;
+      /* no background color so transparency shows */
+      background: none;
     }
+
 
     .site-header .title-wrap {
       color: #fff;
@@ -149,8 +151,8 @@
 <body>
   <!-- Thick colored header with logo -->
   <header class="site-header">
-    <div class="logo"></div>
-    <div class="title-wrap">
+  <img src="logo.png" alt="W5 Bureau Logo" class="logo" />
+  <div class="title-wrap">
       <h1>W5 Incoming QSL Bureau</h1>
       <p>Helping hams manage their QSL cards since the 1950s</p>
     </div>
