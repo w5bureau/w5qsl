@@ -179,6 +179,24 @@
       }
       body { line-height: 1.7; }
     }
+      /* Desktop: pull cards up under the header and shift right to clear the logo */
+  @media (min-width: 769px) {
+    .content {
+      margin-top: -2rem;    /* overlap under header */
+      padding-left: 150px;  /* clear the 150px logo width */
+      padding-right: 1rem;
+    }
+  }
+
+  /* Mobile: no overlap or extra offset—full-width, centered cards */
+  @media (max-width: 768px) {
+    .content {
+      margin-top: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+}
+
   </style>
 </head>
 
