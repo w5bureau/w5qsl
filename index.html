@@ -158,36 +158,26 @@
       }
     }
 
-/* Result card styling */
-.result-card {
-  background: var(--card-bg);
-  color: var(--text-dark);
-  border-radius: var(--radius);
+/* Result area styling */
+#result {
+  background: #fff;
+  color: #333;
+  border-radius: 0.5rem;
   padding: 1rem;
   margin-top: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
-.result-card h3 {
-  margin: 0 0 0.5rem;
-  color: var(--header-color);
+#result p {
+  margin: 0.5rem 0;
+  line-height: 1.4;
 }
-
-.result-card dl {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  row-gap: 0.25rem;
-  column-gap: 1rem;
+/* Make the first word (label) bold */
+#result p:first-child,
+#result p:not(:first-child) {
+  /* no change—this selector is just to illustrate */
 }
-
-.result-card dt {
-  font-weight: bold;
-  text-align: right;
-}
-
-.result-card dd {
-  margin: 0;
-}
+/* If you want to bold the label in each line, you can wrap it in <strong> in your JS output, e.g.: */
+/* lines.push(`<p><strong>Cards:</strong> ${rec.cards}</p>`); */
 
     
   </style>
@@ -335,38 +325,7 @@
       if (!cs) return r.innerHTML = '<p>Please enter a callsign.</p>';
       const rec = callsignData.find(x => x.callsign === cs);
       if (!rec) return r.innerHTML = `<p>No record found for ${cs}.</p>`;
-    document.getElementById('go').addEventListener('click', () => {
-  const cs = document.getElementById('search').value.trim().toUpperCase();
-  const r = document.getElementById('result');
-  if (!cs) {
-    r.innerHTML = '<p>Please enter a callsign.</p>';
-    return;
-  }
-  const rec = callsignData.find(x => x.callsign === cs);
-  if (!rec) {
-    r.innerHTML = `<p>No record found for ${cs}.</p>`;
-    return;
-  }
-  // build a nice card
-  let html = `<div class="result-card">
-                <h3>${rec.callsign}</h3>
-                <dl>`;
-  if (rec.cards != null)      html += `<dt>Cards:</dt><dd>${rec.cards}</dd>`;
-  if (rec.envelopes != null)  html += `<dt>Envelopes:</dt><dd>${rec.envelopes}</dd>`;
-  if (rec.mailed != null)     html += `<dt>Mailed:</dt><dd>${rec.mailed}</dd>`;
-  if (rec.received != null)   html += `<dt>Received:</dt><dd>${rec.received}</dd>`;
-  if (rec.balance != null)    html += `<dt>Balance:</dt><dd>${rec.balance}</dd>`;
-  if (rec.lastMail)           html += `<dt>Last mailing:</dt><dd>${rec.lastMail}</dd>`;
-  html += `   </dl>
-             </div>`;
-
-  r.innerHTML = html;
-});
-
-      
-      
-      
-      /* const lines = [
+      const lines = [
         `${rec.callsign}: ${rec.cards ?? '0'} Cards`,
         `${rec.envelopes ?? '0'} Envelopes on hand`,
         rec.mailed != null ? `${rec.mailed} Envelopes Mailed` : null,
@@ -375,7 +334,7 @@
         rec.lastMail ? `${rec.lastMail} was the last mailing` : null
       ].filter(Boolean);
       r.innerHTML = lines.map(l => `<p>${l}</p>`).join('');
-    }); */
+    });
   </script>
 </body>
 </html>
