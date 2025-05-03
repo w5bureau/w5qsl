@@ -133,7 +133,11 @@
     @media (min-width: 769px) {
       .content {
         margin-top: -1.5rem; padding-left: 150px; padding-right: 1rem;
-      }
+      .modal-content {
+        width: 50vw;       /* half the viewport width */
+        max-width: 500px;  /* don’t exceed 500px */
+    }
+}
     }
     @media (max-width: 768px) {
       .grid-2 { display: block; }
