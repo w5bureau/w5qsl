@@ -28,23 +28,27 @@
       color: var(--text-light);
       line-height: 1.5;
     }
+    /* Centered wrapper */
     .site-container {
       max-width: 960px;
       margin: 0 auto;
       padding: 0 1rem;
     }
+    /* Header */
     .site-header {
       display: flex;
       align-items: center;
       background: var(--header-color);
       padding: 2rem 1rem;
-      border-bottom: 4px solid #1f5a89 var(--card-bg);
+      /* subtle bottom border */
+      /* remove or adjust color here if desired */
+      border-bottom: 4px solid var(--card-bg);
     }
     .logo-container {
       background: var(--card-bg);
       width: 150px;
       height: 150px;
-      border-radius: 0.5rem;
+      border-radius: var(--radius);
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       margin-right: 1rem;
       display: flex;
@@ -60,13 +64,17 @@
       margin: 0;
       font-size: 2.5rem;
       line-height: 1.2;
+      color: #fff;
     }
     .title-wrap p {
       margin: 0.25rem 0 0;
+      color: #eef;
     }
+    /* Content pulled up on desktop */
     .content {
       margin-top: 1rem;
     }
+    /* Card styling */
     .card {
       background: var(--card-bg);
       color: var(--text-dark);
@@ -74,29 +82,32 @@
       padding: 1.5rem;
       margin-bottom: 1.5rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform var(--transition), box-shadow var(--transition);
     }
-    
     .card:hover {
       transform: translateY(-3px);
-      /* optionally deepen the shadow a bit */
       box-shadow: 0 6px 14px rgba(0,0,0,0.25);
     }
-
-      
-    }
     h2 { margin-top: 0; color: var(--header-color); }
+    /* Two-column grid */
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
     }
+    /* Price List table */
+    .table-responsive {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
     .price-list-table {
       width: 100%;
+      min-width: 600px;
       border-collapse: collapse;
       margin-top: 1rem;
     }
-    .price-list-table th, .price-list-table td {
+    .price-list-table th,
+    .price-list-table td {
       padding: 0.75rem;
       border-bottom: 1px solid #ddd;
       text-align: left;
@@ -105,6 +116,7 @@
       background: #f0f0f0;
       font-weight: 700;
     }
+    /* Search */
     .search-wrap {
       display: flex;
       gap: 0.5rem;
@@ -126,6 +138,30 @@
       border: none;
       cursor: pointer;
     }
+    /* Sorters table */
+    .sorters-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    .sorters-table th, .sorters-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    .sorters-table tbody tr:nth-child(odd) {
+      background: #f9f7e8;
+    }
+    .sorters-table td.letter {
+      font-weight: bold;
+      background: #fff8c4;
+    }
+    .sorters-table th:nth-child(3),
+    .sorters-table td:nth-child(3) {
+      border-left: 2px solid #ccc;
+      padding-left: 1.5rem;
+    }
+    /* PayPal button */
     .card-button {
       padding: 0.75rem 1.5rem;
       background: var(--header-color);
@@ -136,8 +172,7 @@
       font-size: 1rem;
       margin-top: 1rem;
     }
-
-    /* Modal */
+    /* Modal overlay */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0;
@@ -159,6 +194,7 @@
       max-height: 90vh;
       overflow-y: auto;
       position: relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     .modal-close {
       position: absolute;
@@ -168,7 +204,6 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
-
     footer {
       text-align: center;
       padding: 1rem;
@@ -176,179 +211,237 @@
       font-size: 0.9rem;
     }
 
-    /* Mobile responsiveness */
+    /* Desktop specific (>=769px) */
+    @media (min-width: 769px) {
+      .content {
+        margin-top: -1.5rem;    /* overlap under header */
+        padding-left: 150px;    /* clear logo width */
+        padding-right: 1rem;
+      }
+    }
+    /* Mobile (<=768px) */
     @media (max-width: 768px) {
       .grid-2 { display: block; }
       .site-header { flex-direction: column; align-items: flex-start; }
-      .logo-container { width: 100px; height: 100px; margin-bottom: 1rem; }
-      .content { margin-left: 0; padding-left: .5rem; padding-right: .5rem; }
-      .modal-content { width: 95vw; padding: 1rem; }
+      .logo-container {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 1rem;
+      }
+      .content {
+        margin-top: 1rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      .modal-content {
+        width: 95vw;
+        padding: 1rem;
+      }
       button, .search-wrap input {
         font-size: 1.1rem;
         padding: 0.75rem;
       }
       body { line-height: 1.5; }
     }
-      /* Desktop: pull cards up under the header and shift right to clear the logo */
-  @media (min-width: 769px) {
-    .content {
-      margin-top: -1rem;    /* overlap under header */
-      padding-left: 150px;  /* clear the 150px logo width */
-      padding-right: 1rem;
-    }
-  }
-
-  /* Mobile: no overlap or extra offset—full-width, centered cards */
-  @media (max-width: 768px) {
-    .content {
-      margin-top: 1rem;
-      padding-left: .5rem;
-      padding-right: .5rem;
-    }
-
-    /* Responsive table wrapper */
-    .table-responsive {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
-    }
-
-/* Ensure the table doesn’t shrink too small */
-  .price-list-table {
-    min-width: 600px;  /* adjust to the natural width of your table */
-    width: 100%;
-     border-collapse: collapse;
-  }
-
-}
-
   </style>
 </head>
 
 <body>
-<div class="site-container">
-  <header class="site-header">
-    <div class="logo-container">
-      <img src="logo.png" alt="W5 Bureau Logo" class="logo" />
-    </div>
-    <div class="title-wrap">
-      <h1>W5 Incoming QSL Bureau</h1>
-      <p>Helping hams manage their QSL cards since the 1950s</p>
-    </div>
-  </header>
-
-  <main class="content">
-
-    <section class="card">
-      <h2>About the Bureau</h2>
-      <p>
-        The W5 Incoming Bureau is operated as a service to the American Radio Relay League (ARRL) by Bureau Manager 
-        David Chenault, <strong>W5CWT</strong>, alongside a dedicated team of volunteers who generously give their 
-        time, talents, and energy to support fellow hams—and to give back to this great hobby.
-      </p>
-      <p>
-        QSL cards arrive at our P.O. Box from a variety of sources—DX bureaus around the world, the ARRL Incoming Bureau, 
-        and more. Upon arrival, pre-sorters organize the incoming mail and forward it to the Bureau Manager, who then 
-        slots cards by letter-group. Once enough cards accumulate for a particular letter, they’re mailed in batch to 
-        that letter’s sorter.
-      </p>
-      <p>
-        Each letter sorter pairs the cards with the envelopes you’ve provided and mails them back out when enough 
-        cards are ready to match your postage. Sorters also reach out to any ham who has cards on file but hasn’t 
-        yet supplied envelopes—ensuring nobody’s cards languish in our system.
-      </p>
-      <p>
-        This service is proudly sponsored by the Rusk County Amateur Radio Club. Thanks for being part of the 
-        W5 Incoming Bureau family!
-      </p>
-    </section>
-
-    <section class="card grid-2">
-      <div>
-        <h2>News & Updates</h2>
-        <p><strong>Effective April 1, 2025:</strong> Management transitioned to David Chenault, W5CWT, and the Rusk County ARC.</p>
-        <p><strong>April 20, 2025:</strong> PayPal & Venmo payments now accepted.</p>
+  <div class="site-container">
+    <header class="site-header">
+      <div class="logo-container">
+        <img src="logo.png" alt="W5 Bureau Logo" class="logo" />
       </div>
-      <div>
-        <h2>Fees & Payments</h2>
-        <ul>
-          <li>Payment methods: cash, check, money order, PayPal, Venmo</li>
-          <li>No SASEs, labels, or stamps</li>
-          <li>Mail to:<br>
+      <div class="title-wrap">
+        <h1>W5 Incoming QSL Bureau</h1>
+        <p>Helping hams manage their QSL cards since the 1950s</p>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- About -->
+      <section class="card">
+        <h2>About the Bureau</h2>
+        <p>
+          The W5 Incoming Bureau is operated as a service to the American Radio Relay League (ARRL)
+          by Bureau Manager David Chenault, <strong>W5CWT</strong>, alongside a dedicated team of
+          volunteers who generously give their time, talents, and energy to support fellow hams—and to
+          give back to this great hobby.
+        </p>
+        <p>
+          QSL cards arrive at our P.O. Box from a variety of sources—DX bureaus around the world,
+          the ARRL Incoming Bureau, and more. Upon arrival, pre-sorters organize the incoming mail
+          and forward it to the Bureau Manager, who then slots cards by letter-group. Once enough
+          cards accumulate for a particular letter, they’re mailed in batch to that letter’s sorter.
+        </p>
+        <p>
+          Each letter sorter pairs the cards with the envelopes you’ve provided and mails them back
+          out when enough cards are ready to match your postage. Sorters also reach out to any ham
+          who has cards on file but hasn’t yet supplied envelopes—ensuring nobody’s cards languish
+          in our system.
+        </p>
+        <p>
+          This service is proudly sponsored by the Rusk County Amateur Radio Club. Thanks for being
+          part of the W5 Incoming Bureau family!
+        </p>
+      </section>
+
+      <!-- News & Fees -->
+      <section class="card grid-2">
+        <div>
+          <h2>News & Updates</h2>
+          <p><strong>Effective April 1, 2025:</strong> Management transitioned to David Chenault, W5CWT,
+             and the Rusk County ARC.</p>
+          <p><strong>April 20, 2025:</strong> PayPal & Venmo payments now accepted.</p>
+        </div>
+        <div>
+          <h2>Fees & Payments</h2>
+          <ul>
+            <li>Payment methods: cash, check, money order, PayPal, Venmo</li>
+            <li>No SASEs, labels, or stamps</li>
+            <li>Mail to:<br>
               W5 Incoming Bureau<br>
               P.O. Box 1496, Henderson, TX 75653
-          </li>
-        </ul>
-        <button id="open-paypal" class="card-button">
-          Purchase SASE Packs
-        </button>
-      </div>
-    </section>
+            </li>
+          </ul>
+          <button id="open-paypal" class="card-button">
+            Purchase SASE Packs
+          </button>
+        </div>
+      </section>
 
-<section class="card">
-  <h2>Price List</h2>
-  <div class="table-responsive">
-    <table class="price-list-table">
-      <thead>
-        <tr>
-          <th>Item</th><th>Quantity</th><th>Price</th><th>Includes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>SASE 5-pack</td><td>5 envelopes</td><td>$7.50</td>
-          <td>Envelopes & standard postage</td>
-        </tr>
-        <tr>
-          <td>SASE 10-pack</td><td>10 envelopes</td><td>$15.00</td>
-          <td>Envelopes & standard postage</td>
-        </tr>
-        <tr>
-          <td>Extra Ounces</td><td>10</td><td>$2.80</td>
-          <td>10 × 1oz stamps</td>
-        </tr>
-        <tr>
-          <td>Extra Ounces</td><td>20</td><td>$5.60</td>
-          <td>20 × 1oz stamps</td>
-        </tr>
-      </tbody>
-    </table>
+      <!-- Price List -->
+      <section class="card">
+        <h2>Price List</h2>
+        <div class="table-responsive">
+          <table class="price-list-table">
+            <thead>
+              <tr>
+                <th>Item</th><th>Quantity</th><th>Price</th><th>Includes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SASE 5-pack</td><td>5 envelopes</td><td>$7.50</td>
+                <td>Envelopes & standard postage</td>
+              </tr>
+              <tr>
+                <td>SASE 10-pack</td><td>10 envelopes</td><td>$15.00</td>
+                <td>Envelopes & standard postage</td>
+              </tr>
+              <tr>
+                <td>Extra Ounces</td><td>10</td><td>$2.80</td>
+                <td>10 × 1oz stamps</td>
+              </tr>
+              <tr>
+                <td>Extra Ounces</td><td>20</td><td>$5.60</td>
+                <td>20 × 1oz stamps</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Search Callsign -->
+      <section class="card">
+        <h2>Search Your Callsign</h2>
+        <div class="search-wrap">
+          <input type="text" id="search" placeholder="Enter callsign…" />
+          <button id="go">Lookup</button>
+        </div>
+        <div id="result"><p>Results will appear here.</p></div>
+      </section>
+
+      <!-- Letter Sorters -->
+      <section class="card">
+        <h2>Letter Sorters</h2>
+        <div class="table-responsive">
+          <table class="sorters-table">
+            <thead>
+              <tr>
+                <th>Letter</th><th>Sorter Name</th><th>Letter</th><th>Sorter Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="letter">A</td><td>Alan, K5ABC</td>
+                <td class="letter">M</td><td>Mary, N5MNO</td>
+              </tr>
+              <tr>
+                <td class="letter">B</td><td>Bob, W5BOP</td>
+                <td class="letter">N</td><td>Nate, K5NTB</td>
+              </tr>
+              <!-- continue for all letters -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
   </div>
-</section>
 
-
-    <!-- Your search, sorter info, and other cards would continue below... -->
-
-  </main>
-</div>
-
-<!-- Modal -->
-<div id="paypal-modal" class="modal-overlay" hidden>
-  <div class="modal-content">
-    <button id="close-paypal" class="modal-close">&times;</button>
-    <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="6EVCJ44CU5PAW"></script>
-    <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
-    <script>cartPaypal.Cart({ id: "pp-view-cart" })</script>
-    <paypal-add-to-cart-button data-id="P252FC79J27JJ"></paypal-add-to-cart-button>
-    <script>cartPaypal.AddToCart({ id: "P252FC79J27JJ" })</script>
+  <!-- PayPal Modal -->
+  <div id="paypal-modal" class="modal-overlay" hidden>
+    <div class="modal-content">
+      <button id="close-paypal" class="modal-close">&times;</button>
+      <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="6EVCJ44CU5PAW"></script>
+      <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+      <script>cartPaypal.Cart({ id: "pp-view-cart" })</script>
+      <paypal-add-to-cart-button data-id="P252FC79J27JJ"></paypal-add-to-cart-button>
+      <script>cartPaypal.AddToCart({ id: "P252FC79J27JJ" })</script>
+    </div>
   </div>
-</div>
 
-<footer>
-  &copy; 2025 W5 Incoming Bureau | Site design assistance by ChatGPT 😉
-</footer>
+  <footer>
+    &copy; 2025 W5 Incoming QSL Bureau
+  </footer>
 
-<script>
-  // Modal logic
-  const modal = document.getElementById('paypal-modal');
-  document.getElementById('open-paypal').addEventListener('click', () => {
-    modal.hidden = false;
-  });
-  document.getElementById('close-paypal').addEventListener('click', () => {
-    modal.hidden = true;
-  });
-  modal.addEventListener('click', e => {
-    if (e.target === modal) modal.hidden = true;
-  });
-</script>
+  <script>
+    // Modal logic
+    const modal = document.getElementById('paypal-modal');
+    document.getElementById('open-paypal').addEventListener('click', () => {
+      modal.hidden = false;
+    });
+    document.getElementById('close-paypal').addEventListener('click', () => {
+      modal.hidden = true;
+    });
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.hidden = true;
+    });
+
+    // Callsign lookup logic
+    let callsignData = [];
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res = await fetch('data.json');
+        callsignData = await res.json();
+      } catch (err) {
+        console.error('Failed to load data.json:', err);
+        document.getElementById('result').innerHTML =
+          '<p style="color:red">Unable to load data.</p>';
+      }
+    });
+    document.getElementById('go').addEventListener('click', () => {
+      const cs = document.getElementById('search').value.trim().toUpperCase();
+      const resultEl = document.getElementById('result');
+      if (!cs) {
+        resultEl.innerHTML = '<p>Please enter a callsign.</p>';
+        return;
+      }
+      const rec = callsignData.find(r => r.callsign === cs);
+      if (!rec) {
+        resultEl.innerHTML = `<p>No record found for ${cs}.</p>`;
+        return;
+      }
+      const lines = [];
+      lines.push(`${rec.callsign}: ${rec.cards ?? '0'} Cards`);
+      lines.push(`${rec.envelopes ?? '0'} Envelopes on hand`);
+      if (rec.mailed != null)   lines.push(`${rec.mailed} Envelopes Mailed`);
+      if (rec.received != null)  lines.push(`${rec.received} Received`);
+      if (rec.balance != null)   lines.push(`${rec.balance} Credit`);
+      if (rec.lastMail)          lines.push(`${rec.lastMail} was the last mailing`);
+      resultEl.innerHTML = lines.map(l => `<p>${l}</p>`).join('');
+    });
+  </script>
 </body>
 </html>
