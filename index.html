@@ -35,7 +35,7 @@
       display: flex;
       align-items: center;
       background: var(--header-color);
-      padding: 3rem 1rem;
+      padding: 1rem;
     }
     .site-header .logo {
       width: 150px;
@@ -146,34 +146,26 @@
       .site-header .logo { margin-bottom: 1rem; }
       .content { margin-top: 1rem; }
     }
-
-    .site-header .logo-container {
-      background: var(--card-bg);   /* white */
-      width: 150px;                 /* fixed square size */
-      height: 150px;                /* same as width */
-      border-radius: 0.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      margin-right: 1rem;           /* or whatever gap you prefer */
-  
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;             /* crop any overflow just in case */
+.site-header .logo-container {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  margin-right: 1rem;
+  overflow: hidden;
 }
 
-
-/* size the image itself */
-
- .site-header .logo-container .logo {
-  /* Remove width/height:100% */
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;         /* still useful for SVGs or odd-aspect images */
-  object-position: center;     /* ensure it’s always centered */
-  display: block;              /* remove inline image quirks */
+.site-header .logo-container .logo {
+  /* No width/height rules at all—let it be intrinsic */
+  display: block;
+  /* Flex parent will auto-center it */
+  margin: auto;
 }
+
 
 
   
