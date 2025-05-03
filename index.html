@@ -160,8 +160,8 @@
 
 /* Result area styling */
 #result {
-  background: #fff;
-  color: #333;
+  background: #2980b9;
+  color: #ffffff;
   border-radius: 0.5rem;
   padding: 1rem;
   margin-top: 1rem;
@@ -326,11 +326,11 @@
       const rec = callsignData.find(x => x.callsign === cs);
       if (!rec) return r.innerHTML = `<p>No record found for ${cs}.</p>`;
       const lines = [
-        `${rec.callsign}: ${rec.cards ?? '0'} Cards`,
-        `${rec.envelopes ?? '0'} Envelopes on hand`,
-        rec.mailed != null ? `${rec.mailed} Envelopes Mailed` : null,
-        rec.received != null ? `${rec.received} Received` : null,
-        rec.balance != null ? `${rec.balance} Credit` : null,
+        `${rec.callsign}: ${rec.cards ?? '0'} <strong>QSL Cards with your sorter.</strong>`,
+        `${rec.envelopes ?? '0'} <strong>SASEs on hand</strong>`,
+        rec.mailed != null ? `${rec.mailed} SASEs mailed last time` : null,
+       /* rec.received != null ? `${rec.received} Received` : null,
+        rec.balance != null ? `${rec.balance} Credit` : null, */
         rec.lastMail ? `${rec.lastMail} was the last mailing` : null
       ].filter(Boolean);
       r.innerHTML = lines.map(l => `<p>${l}</p>`).join('');
