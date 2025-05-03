@@ -166,6 +166,39 @@
   margin: auto;
 }
 
+/* Modal overlay + content */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-overlay[hidden] {
+  display: none;
+}
+.modal-content {
+  background: var(--card-bg);
+  color: var(--text-dark);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.modal-close {
+  position: absolute;
+  top: 0.5rem; right: 0.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
 
 
   
@@ -227,6 +260,27 @@
         </ul>
         <p><em>Include your callsign on all payments.</em></p>
       </div>
+
+      <!-- Trigger button -->
+<button id="open-paypal" class="card-button">
+  Purchase SASE Packs
+</button>
+
+<!-- Hidden overlay/modal -->
+<div id="paypal-modal" class="modal-overlay" role="dialog" aria-modal="true" hidden>
+  <div class="modal-content">
+    <button id="close-paypal" class="modal-close">&times;</button>
+    <!-- Your PayPal scripts go here -->
+    <script src="https://www.paypalobjects.com/ncp/cart/cart.js"
+            data-merchant-id="6EVCJ44CU5PAW"></script>
+    <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+    <script>cartPaypal.Cart({ id: "pp-view-cart" })</script>
+    <paypal-add-to-cart-button data-id="P252FC79J27JJ"></paypal-add-to-cart-button>
+    <script>cartPaypal.AddToCart({ id: "P252FC79J27JJ" })</script>
+  </div>
+</div>
+
+    
     </section>
 
     <section class="card">
@@ -323,6 +377,22 @@
       if (rec.lastMail) lines.push(`${rec.lastMail} was the last mailing`);
       resultEl.innerHTML = lines.map(l => `<p>${l}</p>`).join('');
     });
+
+// Modal open/close logic
+const modal = document.getElementById('paypal-modal');
+document.getElementById('open-paypal').addEventListener('click', () => {
+  modal.hidden = false;
+});
+document.getElementById('close-paypal').addEventListener('click', () => {
+  modal.hidden = true;
+});
+// Optional: click outside to close
+modal.addEventListener('click', e => {
+  if (e.target === modal) modal.hidden = true;
+});
+
+
+    
   </script>
 </body>
 </html>
