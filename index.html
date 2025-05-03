@@ -326,7 +326,7 @@
       const rec = callsignData.find(x => x.callsign === cs);
       if (!rec) return r.innerHTML = `<p>No record found for ${cs}.</p>`;
       const lines = [
-        `<strong>${rec.callsign}: ${rec.cards ?? '0'} <strong>QSL Cards with your sorter.</strong>`,
+        `<strong>${rec.callsign}: ${rec.cards ?? '0'} QSL Cards with your sorter.</strong>`,
         `<strong>${rec.envelopes ?? '0'} SASEs on hand.</strong>`,
         rec.mailed != null ? `${rec.mailed} cards mailed last time.` : null,
        /* rec.received != null ? `${rec.received} Received` : null,
