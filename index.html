@@ -186,8 +186,10 @@
 .bg-images {
   pointer-events: none;        /* clicks pass through */
   position: fixed;
-  top:0; left: 9rem;
+  top:0; left: 50%;
+  transform: translateX(-50%);
   width: 100%; height: 100%;
+  max-width: 960px;
   overflow: hidden;
   z-index: 0;                  /* beneath everything */
 }
@@ -201,13 +203,13 @@
 }
 /* tweak positions/rotations per image */
 .bg1 {
-  top: 5rem; left: 0;
+  top: 20%; left: 0;
 }
 .bg2 {
-  top: 20rem; left: 0;
+  top: 50%; left: 0;
 }
 .bg3 {
-  top: 35rem; left: 0;
+  bottom: 20%; left: 0;
 }
 
 /* ensure cards sit above the images */
